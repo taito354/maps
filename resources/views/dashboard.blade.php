@@ -48,5 +48,5 @@
 
         <script src="{{ asset('js/result.js') }}"></script>
         {{-- googlemap APIの読み込み --}}
-        <script src="https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key={{ env("GOOGLE_MAPS_API_KEY") }}&callback=initMap" async defer></script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key={{ env("GOOGLE_MAPS_API_KEY") }}&callback=initMap&libraries=marker"></script>
 </x-app-layout>
