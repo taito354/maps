@@ -7,7 +7,8 @@ function initMap(){
     let Toyama = {lat: 36.868911, lng: 137.214856};
     opt = {
         zoom:11,
-        center: Toyama
+        center: Toyama,
+        mapId: "fd45b36da25d0d7b"
     };
 
     // mapのインスタンスを生成
@@ -15,10 +16,13 @@ function initMap(){
 
 
     //マーカーを生成
-    marker = new google.maps.Marker({
+    marker = new google.maps.marker.AdvancedMarkerElement({
         position: Toyama,
         map: mapObj,
         title: "ここです"
     });
+
+
 };
 
+document.addEventListener('DOMContentLoaded', initMap);
