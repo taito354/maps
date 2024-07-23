@@ -9,10 +9,10 @@ function getLocation(event){
         navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
 
         function successCallback(position){
-            var latitude = position.coords.latitude;
+            const latitude = position.coords.latitude;
             document.getElementById('latitude').value = latitude;
 
-            var longitude = position.coords.longitude;
+            const longitude = position.coords.longitude;
             document.getElementById('longitude').value = longitude;
 
             document.getElementById('location-form').submit();
