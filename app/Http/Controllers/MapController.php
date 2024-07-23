@@ -32,6 +32,14 @@ class MapController extends Controller
      */
     public function store(Request $request)
     {
+
+        // dd($request);
+
+        $request->validate([
+            "latitude" => "numeric",
+            "longitude" => "numeric"
+        ]);
+
         //日本の時刻を設定します
         date_default_timezone_set("Asia/Tokyo");
         $get_date = date("Y-m-d H:i:s");
@@ -94,6 +102,8 @@ class MapController extends Controller
         $map->user_id = $user_id;
         $map->amount = $amount_data;
         $map->created_at = $get_date;
+        $map->latitude = $request->latitude;
+        $map->longitude = $request->longitude;
         $map->save();
 
         return redirect()->route('dashboard');
