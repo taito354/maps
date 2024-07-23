@@ -33,12 +33,13 @@ class MapController extends Controller
     public function store(Request $request)
     {
 
-        // dd($request);
 
         $request->validate([
-            "latitude" => "numeric",
-            "longitude" => "numeric"
+            "latitude" => "numeric|between: 36.702008, 36.980067",
+            "longitude" => "numeric|between: 136.936340, 137.588654"
         ]);
+
+        // dd($request);
 
         //日本の時刻を設定します
         date_default_timezone_set("Asia/Tokyo");

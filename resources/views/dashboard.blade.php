@@ -39,7 +39,8 @@
                             <input type="hidden" id="latitude" name="latitude" required>
                             <input type="hidden" id="longitude" name="longitude" required>
 
-                            <input type="submit" class="btn btn-primary" value="送信" onclick="getLocation(event)">
+                            <button type="button" class="btn btn-primary" onclick="getLocation(event)">送信</button>
+                            {{-- <input type="submit" class="btn btn-primary" value="送信" onclick="getLocation(event)"> --}}
                         </form>
                     </div>
                   </div>
