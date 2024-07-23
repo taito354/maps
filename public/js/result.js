@@ -1,6 +1,7 @@
 
 //APIから呼び出されるコールバック関数initMapを定義します
 function initMap(){
+
     map = document.getElementById('map');
 
     //地図のデフォルトの表示の中心は富山湾の真ん中らへんにしておく(緯度経度を登録しておく)
