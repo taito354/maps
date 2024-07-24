@@ -51,6 +51,13 @@
 
         <script src="{{ asset('js/location.js') }}"></script>
         <script src="{{ asset('js/result.js') }}"></script>
+
+
+        <script>
+            window.locations = @json($data);
+            console.log(window.locations);
+        </script>
+
         {{-- googlemap APIの読み込み --}}
         <script async defer src="https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key={{ env("GOOGLE_MAPS_API_KEY") }}&callback=initMap&libraries=marker"></script>
         {{-- <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ env("GOOGLE_MAPS_API_KEY") }}&callback=initMap&libraries=marker&v=beta"></script> --}}
