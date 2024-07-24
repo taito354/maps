@@ -15,15 +15,19 @@ function initMap(){
     // mapのインスタンスを生成
     mapObj = new google.maps.Map(map, opt);
 
-
     //マーカーを生成
-    marker = new google.maps.marker.AdvancedMarkerElement({
-        position: Toyama,
-        map: mapObj,
-        title: "ここです"
-    });
+    if(window.locations && Array.isArray(window.locations)){
+        window.locations.forEach(location => {
 
+            const position = new google.maps.LatLng(location.latitude, location.longitude);
+
+            new google.maps.marker.AdvancedMarkerElement({
+                position: position,
+                map: mapObj,
+            });
+        });
+    };
 
 };
 
-document.addEventListener('DOMContentLoaded', initMap);
+// document.addEventListener('DOMContentLoaded', initMap);

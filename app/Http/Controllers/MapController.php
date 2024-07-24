@@ -96,7 +96,7 @@ class MapController extends Controller
         //今日既に投稿していたら、弾く
         if(count($check) > 0){
             session()->flash('check_message', '送信できるのは一日一回までです');
-            return redirect()->route('dashboard');
+            return redirect()->route('dashboard.show');
         }
 
         $map = new Map;
@@ -107,16 +107,41 @@ class MapController extends Controller
         $map->longitude = $request->longitude;
         $map->save();
 
-        return redirect()->route('dashboard');
+        return redirect()->route('dashboard.show');
 
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show()
     {
-        //
+
+        date_default_timezone_set("Asia/Tokyo");
+
+        //取り出すデータの範囲（時刻で）を指定
+        $now = Carbon::now();
+        $todayNoon = Carbon::today()->addHours(12);
+        $yesterdayNoon = Carbon::yesterday()->addHours(12);
+        $tomorrowNoon = Carbon::tomorrow()->addHours(12);
+
+        if($now->lt($todayNoon)){
+            $startTime = $yesterdayNoon;
+            $endTime = $todayNoon;
+        }else{
+            $startTime = $todayNoon;
+            $endTime = $tomorrowNoon;
+        }
+
+        //DBからすでに投稿された位置情報を取得して、ビューに送る
+
+        $data = DB::table('maps')
+                    ->select('latitude', 'longitude', "amount")
+                    ->where('created_at', '>=', $startTime)
+                    ->where('created_at', '<', $endTime)
+                    ->get();
+
+        return view('dashboard', compact('data'));
     }
 
     /**
