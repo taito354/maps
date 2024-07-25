@@ -17,7 +17,7 @@
             </div>
 
             <div class="col-md-3">
-                <div class="card">
+                <div class="card card-style">
                     <div class="card-header">
                       情報を提供する
                     </div>
@@ -48,6 +48,12 @@
 
         </div><!--div.row-->
     </div><!--div.container-->
+
+        <style>
+            .card-style{
+                margin-top: 150px;
+            }
+        </style>
 
         <script src="{{ asset('js/location.js') }}"></script>
         <script src="{{ asset('js/result.js') }}"></script>
